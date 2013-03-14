@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Graduate' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/index.css"/>
+	<script src="js/jquery.js" type="text/javascript"></script>
+	<script src="js/handlebars.js" type="text/javascript"></script>
+	
+</head>
+<body>
+	<script src="post.js" type = "text/javascript"></script>
+	<script id="blog-entry" type="text/x-handlebar-template">
+		{{#each this}}
+		<h2 style="font-family: 'Graduate', cursive;"><center>{{{title}}}</center></h2>
+		<div>
+			<hr>
+			<p style="font-family: Georgia;">&ensp;&ensp;&ensp;{{{body}}}</p>
+		</div>
+			<hr>
+		{{/each}}
+	</script>
+
+	<div id="content-area" class="bg drop box">
+		<hr>
+		<script>
+			var template = Handlebars.compile( $("#blog-entry").html() );
+			if(!data)
+			{
+				var data = [
+				{
+					title: '404 - Somthing went wrong!',
+					body: '&ensp;&ensp;In the backend somthing just whent awry, please reload the page. if you still have errors please email me at <strong>johnrowleyster@gmail.com</strong>'
+				}];
+			}
+			$('div').append( template(data) );
+		</script>
+	</div>
+</body>
+</html>
